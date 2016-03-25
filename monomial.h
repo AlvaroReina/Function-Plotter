@@ -1,5 +1,7 @@
 typedef struct T_Mono* T_Polynomial;
 
+typedef double (*functiontype)(double);
+
 struct T_Mono {
 	double multiplier;
 	double degree;
@@ -22,5 +24,6 @@ struct T_Mono {
 /* Create a monomial + Add to the expression */
     void addc(T_Polynomial* poly);
 
-/* Shows a expression */
+/* Shows an expression */
     void show(T_Polynomial poly);
+

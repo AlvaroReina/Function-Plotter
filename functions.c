@@ -17,6 +17,22 @@ double reciprocal (double num){
     return 1/num;
 }
 
+double absolute (double num){
+    return fabs(num);
+}
+
+double cosine (double num){
+    return cos(num);
+}
+
+double sine (double num){
+    return sin(num);
+}
+
+double epower (double num){
+    return exp(num);
+}
+
 void calc(int min, int max, double(*functionPtr)(double)){
     if (max < min){
         int aux = max;

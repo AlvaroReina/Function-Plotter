@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "monomial.h"
+#include "functions.h"
 
 void create(T_Polynomial* poly){
     T_Polynomial temp = malloc(sizeof (T_Polynomial));
@@ -20,7 +21,6 @@ void destroy(T_Polynomial* poly){
         current = next;
     }
     *poly = NULL;
-
 }
 
 void add(T_Polynomial* poly, T_Polynomial* mono){
@@ -37,29 +37,33 @@ T_Polynomial createMono(){
     printf("Enter degree: ");
     scanf("%lf", &aux);
     temp->degree = aux;
+    temp->funct = &squareroot;
     return temp;
 }
 
 void addc(T_Polynomial* poly){
     T_Polynomial temp = createMono();
     add(poly, &temp);
+
 }
 
 void show(T_Polynomial poly){
     T_Polynomial current;
-    T_Polynomial next;
     current = poly;
-    next = poly;
     printf("Expression: \n");
-    do{
+    while(current != NULL){
+        printf(" + %fx", current->multiplier);
+        printf("^%f", current->degree);
+        current = current->next;
+    }
+}
 
-        current = next;
-        if(next->multiplier != 0){
-            printf(" + %fx",next->multiplier);
-            printf("^%f",next->degree);
-        }
-        if(current->next != NULL){
-        next = current->next;
-        }
-    }while (current->next != NULL);
+void pruebaFunct(double(*functionPtr)(double)){
+    double i = 5;
+    printf("Resultado: %f",(*functionPtr)(i));
+
+}
+
+void calcPoint(int x, double(*functionPtr)(double)){
+
 }
