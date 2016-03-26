@@ -14,7 +14,8 @@ double squareroot (double num){
 }
 
 double reciprocal (double num){
-    return 1/num;
+    if(num == 0) return 0;
+    else return 1/num;
 }
 
 double absolute (double num){
@@ -31,18 +32,4 @@ double sine (double num){
 
 double epower (double num){
     return exp(num);
-}
-
-void calc(int min, int max, double(*functionPtr)(double)){
-    if (max < min){
-        int aux = max;
-        max = min;
-        min = aux;
-    }
-    int i = min;
-    while(i <= max){
-
-        printf("%f , ", (*functionPtr)(i));
-        i++;
-    }
 }
